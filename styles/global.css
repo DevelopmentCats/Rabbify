@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #__next {
+  height: 100%;
+}
+
+body {
+  @apply bg-black text-orange-400;
+}
+
+/* Add some custom styles */
+.rabbit-hop {
+  transition: transform 0.3s ease-in-out;
+}
+
+.rabbit-hop:hover {
+  transform: translateY(-5px);
+}
+
+.rabbit-ears {
+  position: relative;
+}
+
+.rabbit-ears::before,
+.rabbit-ears::after {
+  content: '';
+  position: absolute;
+  top: -15px;
+  width: 2px;
+  height: 15px;
+  background-color: #FF9F1C;
+  border-radius: 50% 50% 0 0;
+}
+
+.rabbit-ears::before {
+  left: -5px;
+  transform: rotate(-15deg);
+}
+
+.rabbit-ears::after {
+  right: -5px;
+  transform: rotate(15deg);
+}
