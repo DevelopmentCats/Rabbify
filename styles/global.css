@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #000000;
+  --surface: #1a1a1a;
+  --surface-dark: #0f0f0f;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --accent: #ff4d06;
+  --accent-hover: #ff6a33;
+}
+
+body {
+  @apply bg-[var(--background)] text-[var(--text-primary)];
+  font-family: 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold mb-2 text-[var(--accent)];
+}
+
+h1 { @apply text-4xl; }
+h2 { @apply text-3xl; }
+h3 { @apply text-2xl; }
+h4 { @apply text-xl; }
+h5 { @apply text-lg; }
+h6 { @apply text-base; }
+
+a {
+  @apply text-[var(--accent)] hover:text-[var(--text-primary)] transition-colors duration-200;
+}
+
+/* Layout */
+.container {
+  @apply w-full h-full mx-auto px-4;
+}
+
+/* Buttons */
+.btn {
+  @apply inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-full shadow-sm text-[var(--background)] bg-[var(--accent)] hover:bg-[var(--accent-hover)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--accent)] transition-colors duration-200;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-full shadow-sm text-[var(--accent)] bg-[var(--surface)] hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--accent)] transition-colors duration-200;
+}
+
+/* Form elements */
+input, textarea, select {
+  @apply bg-[var(--surface)] text-[var(--text-primary)] border-[var(--surface)] rounded-full focus:ring-[var(--accent)] focus:border-[var(--accent)];
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--accent-hover);
+}
+
+/* Spotify-like components */
+.track-list {
+  @apply divide-y divide-[var(--surface)];
+}
+
+.track-item {
+  @apply py-2 hover:bg-[var(--surface)] transition-colors duration-200;
+}
+
+.player-controls {
+  @apply flex items-center justify-center space-x-4;
+  justify-content: center; /* Add this line */
+}
+
+/* Slider styles */
+.slider-root {
+  @apply relative flex w-full touch-none select-none items-center cursor-pointer;
+}
+
+.slider-track {
+  @apply relative h-2 w-full grow overflow-hidden rounded-full bg-[var(--surface-dark)];
+}
+
+.slider-range {
+  @apply absolute h-full bg-[var(--accent)];
+}
+
+.slider-thumb {
+  @apply block h-5 w-5 rounded-full border-2 border-[var(--accent)] bg-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  h1 { @apply text-3xl; }
+  h2 { @apply text-2xl; }
+  h3 { @apply text-xl; }
+}
+
+/* Accessibility */
+.sr-only {
+  @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+}
+
+/* Custom styles */
+.rabbit-hop {
+  transition: transform 0.3s ease-in-out;
+}
+
+.rabbit-hop:hover {
+  transform: translateY(-5px);
+}
+
+/* Tailwind custom utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Overscroll behavior */
+body {
+  overscroll-behavior-y: none;
+}
+
+/* Full-page layout */
+.full-page {
+  @apply min-h-screen flex flex-col;
+}
+
+.main-content {
+  @apply flex-grow flex flex-col md:flex-row;
+}
+
+.sidebar {
+  @apply w-full md:w-64 bg-[var(--surface)] p-4;
+}
+
+.player-area {
+  @apply flex-grow bg-[var(--background)] p-4;
+}
+
+.now-playing {
+  @apply fixed bottom-0 left-0 right-0 bg-[var(--surface)] p-4;
+}
+
+/* Improved scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--accent) 80%, white);
+}
+
+/* Improved focus styles */
+:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Transition for color changes */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
